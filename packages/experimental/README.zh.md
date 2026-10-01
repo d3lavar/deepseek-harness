@@ -26,6 +26,8 @@ kind: "package-group"
 |---|---|---|
 | [`speech-to-text`](speech-to-text/README.zh.md) | 具名语音识别 Provider | `ctx.speechToText` |
 | [`speech-to-text-sensevoice`](speech-to-text-sensevoice/README.zh.md) | 托管本地 SenseVoice 推理 | — |
+| [`speech-to-text-gigaam`](speech-to-text-gigaam/README.zh.md) | 托管本地 GigaAM 俄语推理 | — |
+| [`speech-to-text-local`](speech-to-text-local/README.zh.md) | 托管本地识别器共享管线 | — |
 | [`api-speech-to-text`](api-speech-to-text/README.zh.md) | 带认证的临时转写 Remote | `ctx.speechController` |
 | [`client-ui-voice-input`](client-ui-voice-input/README.zh.md) | 麦克风录音与版本检查后的草稿插入 | — |
 | [`voice-input-bundle`](voice-input-bundle/README.zh.md) | 默认禁用的可选语音输入组合 | — |

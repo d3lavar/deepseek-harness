@@ -1,0 +1,11 @@
+/** Shared runtime plumbing for managed host-local speech recognizers. */
+export { SpeechInputError } from './input-error.ts'
+export { localConfigFields, type LocalInferenceConfig, type LocalProviderConfig } from './config.ts'
+export { classifyDownloadFailure, SpeechDownloadError } from './download-error.ts'
+export { orderModelSources } from './model-sources.ts'
+export { startRecognitionServer } from './process-server.ts'
+export { runRecognitionWorker } from './worker-entry.ts'
+export { assertLocalSpeechPlatform, createLocalRuntimeAdapter, downloadAsset, readLocalRuntimeLock, localRuntimePaths, localWorkerPath, matchesAsset, preparePinnedRuntime, verifyPinnedRuntime, type Asset, type RuntimeLock, type RuntimePaths, type RuntimePlan } from './runtime.ts'
+export { ManagedSpeechWorker, readReady, readTranscript, type RuntimeDependencies } from './managed-worker.ts'
+export { localVadDetector, runVadTranscription, type SherpaBindings, type VadDetector, type VadRecognizer } from './vad.ts'
+export { registerLocalSpeechProvider, type LocalProviderRegistration } from './registration.ts'
