@@ -138,6 +138,20 @@ it('persists settings and reports disconnection in the detail card', async () =>
   expect(screen.getByText(zh.loading)).toBeTruthy()
   expect(screen.getByRole('alert').textContent).toContain('disconnected')
 })
+
+it('carries the new provider language when the selected one is unsupported', () => {
+  const store = createSnapshotStore<SpeechReadiness>({ connected: true, error: null, catalog: {
+    selection: { providerId: 'sensevoice' as SpeechProviderId, language: 'en' }, maxAudioBytes: 100, maxDurationSeconds: 120,
+    providers: [{ id: 'sensevoice' as SpeechProviderId, name: 'SenseVoiceSmall', location: 'host-local', languages: ['auto', 'zh', 'en', 'ja'], preparation: { phase: 'ready' } },
+      { id: 'ru' as SpeechProviderId, name: 'GigaAM', location: 'host-local', languages: ['ru'], preparation: { phase: 'unprepared' } }],
+  } })
+  const configure = vi.fn<VoiceInputProps['configure']>(async () => {})
+  const props = { useSpeechReadiness: bindSnapshotSelector(store), configure, t,
+    prepare: vi.fn(async () => {}), cancelPreparation: vi.fn(async () => {}) }
+  render(<VoicePreparation {...props} />)
+  fireEvent.change(screen.getByLabelText(zh.provider), { target: { value: 'ru' } })
+  expect(configure).toHaveBeenCalledWith({ providerId: 'ru', language: 'ru' })
+})
 it.each(['cancelled', 'standby', 'cancelling'] as const)('displays Host state %s', (phase) => {
   fixture(phase === 'cancelling' ? { phase, startedAt: Date.now() } : { phase })
   expect(screen.getByText(zh[`preparation.${phase}`])).toBeTruthy()
