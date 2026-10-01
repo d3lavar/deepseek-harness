@@ -1,11 +1,9 @@
 {
-  "models": {
-    "int8": {
-      "name": "model.int8.onnx",
-      "url": "https://huggingface.co/csukuangfj/sherpa-onnx-nemo-ctc-giga-am-v2-russian-2025-04-19/resolve/f5555086f28ef11d600e30d76b61d75fd9685196/model.int8.onnx",
-      "bytes": 236457977,
-      "sha256": "d0ce4aef25f58d495781ee8f05320d9e51b821f47804e07aa6549b53a72f67e8"
-    }
+  "model": {
+    "name": "model.int8.onnx",
+    "url": "https://huggingface.co/csukuangfj/sherpa-onnx-nemo-ctc-giga-am-v2-russian-2025-04-19/resolve/f5555086f28ef11d600e30d76b61d75fd9685196/model.int8.onnx",
+    "bytes": 236457977,
+    "sha256": "d0ce4aef25f58d495781ee8f05320d9e51b821f47804e07aa6549b53a72f67e8"
   },
   "tokens": {
     "name": "tokens.txt",
