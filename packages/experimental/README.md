@@ -26,6 +26,8 @@ The experimental group contains prototype capabilities whose contracts can chang
 |---|---|---|
 | [`speech-to-text`](speech-to-text/README.md) | Named speech recognition providers | `ctx.speechToText` |
 | [`speech-to-text-sensevoice`](speech-to-text-sensevoice/README.md) | Managed local SenseVoice inference | — |
+| [`speech-to-text-gigaam`](speech-to-text-gigaam/README.md) | Managed local GigaAM Russian inference | — |
+| [`speech-to-text-local`](speech-to-text-local/README.md) | Shared managed local recognizer plumbing | — |
 | [`api-speech-to-text`](api-speech-to-text/README.md) | Authenticated transient transcription Remote | `ctx.speechController` |
 | [`client-ui-voice-input`](client-ui-voice-input/README.md) | Microphone capture and guarded draft insertion | — |
 | [`voice-input-bundle`](voice-input-bundle/README.md) | Default-disabled optional voice input composition | — |

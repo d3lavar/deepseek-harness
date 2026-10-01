@@ -139,12 +139,18 @@ export function VoicePreparation({ useSpeechReadiness, ...props }: Pick<InjectFa
   }
   const selected = catalog?.providers.find(provider => provider.id === catalog.selection.providerId)
   const languageNames: Readonly<Record<string, string>> = {
-    auto: props.t('auto'), zh: props.t('zh'), en: props.t('en'), yue: props.t('yue'), ja: props.t('ja'), ko: props.t('ko'),
+    auto: props.t('auto'), zh: props.t('zh'), en: props.t('en'), yue: props.t('yue'), ja: props.t('ja'), ko: props.t('ko'), ru: props.t('ru'),
   }
   return <div>
     {catalog && <div className={css.preferences}>
       <label>{props.t('provider')}<select value={catalog.selection.providerId} disabled={!readiness.connected || saving}
-        onChange={(event) => { void configure({ providerId: event.target.value as SpeechProviderId }) }}>
+        onChange={(event) => {
+          const next = catalog.providers.find(provider => provider.id === event.target.value)
+          // The service validates the provider-language pair, so a provider whose languages exclude
+          // the current selection carries its own first language in the same patch.
+          const language = next !== undefined && !next.languages.includes(catalog.selection.language) ? next.languages[0] : undefined
+          void configure({ providerId: event.target.value as SpeechProviderId, ...(language === undefined ? {} : { language }) })
+        }}>
         {catalog.providers.map(provider => <option key={provider.id} value={provider.id}>{provider.name}</option>)}
       </select></label>
       <label>{props.t('language')}<select value={catalog.selection.language} disabled={!readiness.connected || saving}
